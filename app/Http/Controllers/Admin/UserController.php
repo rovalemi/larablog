@@ -7,11 +7,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'can:admin']);
-    }
-
     public function index()
     {
         $users = User::paginate(20);

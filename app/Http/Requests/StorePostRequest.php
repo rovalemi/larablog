@@ -8,7 +8,7 @@ class StorePostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->check(); // cualquier usuario autenticado puede crear
+        return auth()->check();
     }
 
     public function rules(): array

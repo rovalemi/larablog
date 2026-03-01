@@ -8,7 +8,7 @@ class UpdatePostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // la Policy se encargará de autorizar
+        return auth()->check();
     }
 
     public function rules(): array

@@ -7,11 +7,6 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'can:admin']);
-    }
-
     public function index()
     {
         $posts = Post::with('user')->paginate(15);

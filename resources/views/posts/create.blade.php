@@ -1,17 +1,11 @@
-@extends('layouts.app')
-@section('content')
-    <div class="container mx-auto px-4">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl">Crear Post</h2>
+    </x-slot>
+
+    <div class="max-w-4xl mx-auto py-6">
         <form action="{{ route('posts.store') }}" method="POST">
-            @csrf
-            <div class="mb-4">
-                <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Título:</label>
-                <input type="text" name="title" id="title" class="shadow appearance-none focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Contenido:</label>
-                <textarea name="content" id="content" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-            </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Publicar</button>
+            @include('posts._form', ['btnText' => 'Crear'])
         </form>
     </div>
-@endsection
+</x-app-layout>

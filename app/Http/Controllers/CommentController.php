@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Http\Requests\StoreCommentRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CommentController extends Controller
 {
+    use AuthorizesRequests;
+
     public function store(StoreCommentRequest $request, Post $post)
     {
         Comment::create([

@@ -11,6 +11,15 @@ Route::get('/', function () {
 
 // Rutas públicas
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+// Crear post (ESTO VA ANTES DEL SHOW)
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+// Mostrar post (después del create)
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Rutas protegidas por Jetstream
@@ -25,8 +34,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    // Crear post
-    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    // Guardar post
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
     // Editar post
